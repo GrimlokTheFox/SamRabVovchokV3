@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -282,8 +285,35 @@ namespace SamRabVovchokV3
         }
         static public void Num5()
         {
-            Console.WriteLine("Чтобы реализовать задание в 3D графике, нужно задействовать пакет NuGet: OpenTK, к сожалению, в этом я не силён.");
-            Start();
+            //
+            //Задействован WinForms. 
+            //Есть отображение.
+            //Ваши переменные вводятся с проверкой.
+            //
+            Console.WriteLine("Задача на поиск точки, которая попадает в закрашенную территорию. (После того, как вы введёте, увидите изображение, куда вы попали.");
+            Console.Write("Введите X: ");
+            try
+            {
+                X = double.Parse(Console.ReadLine());
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Произошла критическая ошибка, попробуйте ввести другие значения для выражения");
+                Num5();
+            }
+            Console.Write("Введите Y: ");
+            try
+            {
+                Y = double.Parse(Console.ReadLine());
+                Task5Graphics task5 = new Task5Graphics(X, Y);
+                task5.ShowDialog();
+                Start();
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e);
+                Num5();
+            }
         }
     }
 }
